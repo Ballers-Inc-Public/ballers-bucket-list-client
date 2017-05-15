@@ -6,6 +6,7 @@ const store = require('../store')
 const signUpSuccess = (data) => {
   console.log('User sucessfully created:', data)
   console.log('Store looks like ', store)
+  $('#sign-up').trigger('reset')
 }
 
 const signUpFailure = (error) => {
@@ -21,6 +22,7 @@ const signInSuccess = (data) => {
   console.log('signIn success ran, data is: ', data)
   store.user = data.user
   console.log('Store looks like ', store)
+  $('#sign-in').trigger('reset')
 }
 
 const signInFailure = (error) => {
@@ -34,6 +36,7 @@ const signInFailure = (error) => {
 const changePasswordSuccess = (data) => {
   console.log('Password was succesfully changed, data is: ', data)
   console.log('Store looks like ', store)
+  $('#change-password').trigger('reset')
 }
 
 const changePasswordFailure = (error) => {

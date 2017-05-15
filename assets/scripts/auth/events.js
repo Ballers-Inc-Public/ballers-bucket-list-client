@@ -25,9 +25,9 @@ const onSignUp = function (event) {
   }
 
 // Create User API request
-  authApi.signUp(data)
-  .then(authUi.signUpSuccess)
-  .catch(authUi.signUpFailure)
+  api.signUp(data)
+  .then(ui.signUpSuccess)
+  .catch(ui.signUpFailure)
 }
 
 // SIGNIN FUNTIONALITY LAUNCHED WHEN CLICKED IN MODAL___________________
@@ -44,9 +44,9 @@ const onSignIn = function (event) {
     return
   }
 
-  authApi.signIn(data)
-    .then(authUi.signInSuccess)
-    .catch(authUi.signInFailure)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 // CHANGE PASSWORD FUNTIONALITY LAUNCHED WHEN CLICKED IN MODAL___________________
@@ -69,9 +69,9 @@ const onChangePassword = function (event) {
     return
   }
 
-  authApi.changePassword(data)
-    .then(authUi.changePasswordSuccess)
-    .catch(authUi.changePasswordFailure)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
 }
 
 // SIGNOUT FUNCTION EXECUTED WHEN BUTTON CLICKED___________________
@@ -82,20 +82,17 @@ const onSignOut = function (event) {
     // console.log('Not signed In')
     return
   }
-  authApi.signOut()
-    .then(authUi.signOutSuccess)
-    .catch(authUi.signOutFailure)
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
-  $(document).on('submit', '#signUpForm', onSignUp)
-  $(document).on('submit', '#signInForm', onSignIn)
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
-  $('#changePasswordForm').on('submit', onChangePassword)
-  $('#signupclose').on('click', authUi.resetSignUpModal)
-  $('#signinclose').on('click', authUi.resetSignInModal)
-  $('#changepasswordclose').on('click', authUi.resetChangePasswordModal)
 }
 
 module.exports = {
