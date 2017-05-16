@@ -39,44 +39,36 @@ const onCreateGoal = function (event) {
     .catch(ui.signOutFailure)
 }
 
-
 // On Update goal___________________
 const onUpdateGoal = function (event) {
   event.preventDefault()
   // console.log('Changing password run')
   const data = getFormFields(this)
 
+  // checking if the title/status fields are populted
   if (
-    data.passwords.old === '' || data.passwords.new === '') {
+    data.goals.title === '' || data.goals.status === '') {
+// TODO need to add error message here, waiting on a spot in HTML
     $('#change-pass-blank-field-failure-alert').show()
     // console.log('No blank fields accepted')
     return
   }
 
-  if (
-    data.passwords.old === data.passwords.new) {
-    $('#change-pass-same-password-failure-alert').show()
-    // console.log('same password')
-    return
-  }
-
-  api.changePassword(data)
-    .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure)
+  api.updateGoal(data)
+    .then(ui.updateGoalSucess)
+    .catch(ui.failure)
 }
 
 // On Delete Goal
 const onDeleteGoal = function (event) {
   event.preventDefault()
-  // console.log('Sign out run')
-  if (store.user === undefined) {
-    // console.log('Not signed In')
-    return
-  }
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+  // HOW DOES THE FUNCTION GET THE ID OF THE GOAL
+  let id
+  api.deleteGoal(id)
+    .then(ui.deleteGoalSuccess)
+    .catch(ui.failure)
 }
+
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
@@ -86,5 +78,7 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onDeleteGoal,
+  onUpdateGoal
 }

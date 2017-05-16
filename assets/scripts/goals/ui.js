@@ -61,6 +61,18 @@ const signOutFailure = (error) => {
   console.log('Store looks like ', store)
 }
 
+const updateGoalSucess = function () {
+  console.log('You updated a goal...whoop')
+}
+
+const deleteGoalSuccess = function () {
+  console.log('you deleted a goal...YAY...IGuess!')
+}
+
+const failure = function () {
+  console.log("That didn't work...")
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -69,5 +81,8 @@ module.exports = {
   signOutFailure,
   signOutSuccess,
   changePasswordFailure,
-  changePasswordSuccess
+  changePasswordSuccess,
+  deleteGoalSuccess,
+  failure,
+  updateGoalSucess
 }
