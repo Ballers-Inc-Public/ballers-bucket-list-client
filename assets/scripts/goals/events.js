@@ -11,34 +11,30 @@ const onGetGoals = function (event) {
 
 // API request for index all
   api.signUp(data)
-  .then(ui.signUpSuccess)
-  .catch(ui.signUpFailure)
-}
-
-// Pull single goal___________________
-const onGetSingleGoal = function (event) {
-  event.preventDefault()
-  // console.log('Sign In run')
-  const data = getFormFields(this)
-
-  api.signIn(data)
-    .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
+  .then(ui.getGoalsSuccess)
+  .catch(ui.Failure)
 }
 
 // On Create Goal
 const onCreateGoal = function (event) {
   event.preventDefault()
-  // console.log('Sign out run')
   if (store.user === undefined) {
     // console.log('Not signed In')
     return
   }
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+  // console.log('Sign out run')
+  const userId = store.user.id
+  const data = {
+    goal: {
+      title: data.title,
+      status: status,
+      user_id: userId
+    }
+  }
+  api.createGoal(data)
+    .then(ui.createGoalSuccess)
+    .catch(ui.Failure)
 }
-
 // On Update goal___________________
 const onUpdateGoal = function (event) {
   event.preventDefault()
@@ -68,17 +64,18 @@ const onDeleteGoal = function (event) {
     .then(ui.deleteGoalSuccess)
     .catch(ui.failure)
 }
-
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('click', onSignOut)
+  // $('#sign-up').on('submit', onSignUp)
+  // $('#sign-in').on('submit', onSignIn)
+  // $('#change-password').on('submit', onChangePassword)
+  // $('#sign-out').on('click', onSignOut)
 }
 
 module.exports = {
   addHandlers,
   onDeleteGoal,
-  onUpdateGoal
+  onUpdateGoal,
+  onCreateGoal,
+  onGetGoals
 }
