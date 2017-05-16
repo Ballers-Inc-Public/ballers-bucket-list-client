@@ -12,6 +12,44 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <div class="form group">
+          <form id="sign-up">
+            <fieldset>
+              <legend></legend>
+              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Username should be in the following format: example@email.com" name="credentials[email]" id="sign-up-email" placeholder="Email">
+              <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
+              <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirmation">
+              <input type="submit" name="submit" value="Sign up">
+              <p class="sign-up-message"></p>
+            </fieldset>
+          </form>
+        </div>
+          <div class="form group">
+            <form id="sign-in">
+              <fieldset>
+                <legend></legend>
+                <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Email"><br>
+                <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password"><br>
+                <p></p>
+                <input type="submit" name="submit" value="Sign in">
+                <p class="sign-in-message"></p>
+              </fieldset>
+            </form>
+        </div>
+          <div class="form group">
+            <form id="change-password">
+              <fieldset>
+              <legend></legend>
+              <input type="password" name="passwords[old]" id="change-password-old" placeholder="Old Password">
+              <input type="password" name="passwords[new]" id="change-password-new" placeholder="New Password">
+              <input type="submit" name="submit" value="Change Password">
+              <p class="password-change-message"></p>
+              </fieldset>
+            </form>
+        </div>
+        <button type="button" id="sign-out">
+          Sign Out
+        </button>
       <h1>Example</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
