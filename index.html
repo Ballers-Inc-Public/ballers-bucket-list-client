@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Ballers Bucket List</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
@@ -12,6 +12,9 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <h1>Baller's Bucket List</h1>
+      <h3>Buckets for Days</h3>
+      <iframe src="https://giphy.com/embed/Z5cXcVX97j9Re" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
       <div class="form group">
           <form id="sign-up">
             <fieldset>
@@ -50,14 +53,49 @@
         <button type="button" id="sign-out">
           Sign Out
         </button>
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+        <div class="goal-ui">
+
+        <h1> Here are your Goals</h1>
+
+        <div class="form group">
+            <form id="add-goal">
+              <fieldset>
+                <legend></legend>
+                <input type="text" name="goal[title]" id="add-goal-title" placeholder="What is the Title of your goal">
+                <input type="text" name="goal[status]" id="add-goal-status" placeholder="Status of Goal">
+                <input type="submit" name="submit" value="Add Goal">
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="form group">
+              <form id="modify-goal">
+                <fieldset>
+                  <legend></legend>
+                  <label>Current Record</label>
+                  <p id='modify-target-record'><p>
+                  <input type="text" name="goal[title]" id="modify-goal-title" placeholder="What is the Title of your goal">
+                  <input type="text" name="goal[status]" id="modify-goal-status" placeholder="Status of Goal">
+                  <input type="submit" name="submit" value="Modify Goal">
+                </fieldset>
+              </form>
+            </div>
+
+<table>
+  <tr class="table-header">
+    <td>ID</td>
+    <td>Title</td>
+    <td>Status</td>
+    <td>Modify</td>
+    <td>Delete</td>
+  </tr>
+  <div class="users-goals-table-data">
+
+  </div>
+</table>
+
+        </div>
+
     </body>
 </html>
