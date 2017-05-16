@@ -5,12 +5,10 @@ const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
 // Pull Goal List___________________
-const onGetGoals = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
+const onGetGoals = function () {
 
 // API request for index all
-  api.signUp(data)
+  api.getGoals()
   .then(ui.getGoalsSuccess)
   .catch(ui.Failure)
 }
@@ -24,14 +22,11 @@ const onCreateGoal = function (event) {
   }
   // console.log('Sign out run')
   const userId = store.user.id
-  const data = {
-    goal: {
-      title: data.title,
-      status: status,
-      user_id: userId
-    }
-  }
+  const data = getFormFields(this)
+  console.log(data)
+
   api.createGoal(data)
+    .then(onGetGoals)
     .then(ui.createGoalSuccess)
     .catch(ui.Failure)
 }
@@ -40,18 +35,21 @@ const onUpdateGoal = function (event) {
   event.preventDefault()
   // console.log('Changing password run')
   const data = getFormFields(this)
+  console.log(data)
+  data.goal.id = $('#modify-target-record').text()
 
+  console.log(data)
   // checking if the title/status fields are populted
   if (
-    data.goals.title === '' || data.goals.status === '') {
+    data.goal.title === '' || data.goal.status === '') {
 // TODO need to add error message here, waiting on a spot in HTML
-    $('#change-pass-blank-field-failure-alert').show()
-    // console.log('No blank fields accepted')
+    console.log('no Changes necessary')
     return
   }
 
   api.updateGoal(data)
     .then(ui.updateGoalSucess)
+    .then(onGetGoals)
     .catch(ui.failure)
 }
 
@@ -59,17 +57,32 @@ const onUpdateGoal = function (event) {
 const onDeleteGoal = function (event) {
   event.preventDefault()
   // HOW DOES THE FUNCTION GET THE ID OF THE GOAL
-  let id
+  const id = $(event.target).parents('tr').attr('data-id')
+  console.log(id)
   api.deleteGoal(id)
     .then(ui.deleteGoalSuccess)
+    .then(onGetGoals)
     .catch(ui.failure)
 }
+
+const onLoadUpdateForm = function (event) {
+  event.preventDefault()
+  const id = $(event.target).parents('tr').attr('data-id')
+  $('#modify-target-record').text(id)
+}
+
+const onClickGetGoals = function (event) {
+    event.preventDefault()
+    onGetGoals()
+}
+
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
-  // $('#sign-up').on('submit', onSignUp)
-  // $('#sign-in').on('submit', onSignIn)
-  // $('#change-password').on('submit', onChangePassword)
-  // $('#sign-out').on('click', onSignOut)
+  $('#add-goal').on('submit', onCreateGoal)
+  $('#modify-goal').on('submit', onUpdateGoal)
+  $(document).on('click', '.delete-button', onDeleteGoal)
+  $(document).on('click', '.modify-button', onLoadUpdateForm)
+  $('#get-all-goals').on('click', onGetGoals)
 }
 
 module.exports = {

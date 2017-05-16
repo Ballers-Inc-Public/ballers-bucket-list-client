@@ -27,10 +27,10 @@ const createGoal = function (data) {
 }
 const updateGoal = function (data) {
   return $.ajax({
-    method: 'DELETE',
-    url: config.apiOrigins.production + '/goals/' + data.id,
+    method: 'PATCH',
+    url: config.apiOrigin + '/goals/' + data.goal.id,
     headers: {
-      Authorization: 'Token token=' + store.store.token
+      Authorization: 'Token token=' + store.user.token
     },
     data: data
   })
@@ -39,9 +39,9 @@ const updateGoal = function (data) {
 const deleteGoal = function (id) {
   return $.ajax({
     method: 'DELETE',
-    url: config.apiOrigins.production + '/goals/' + id,
+    url: config.apiOrigin + '/goals/' + id,
     headers: {
-      Authorization: 'Token token=' + store.store.token
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }

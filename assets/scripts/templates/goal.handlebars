@@ -2,15 +2,15 @@
 
 {{#each goals as |goal|}}
 
-
-<tr id='table-data-{{goal.id}}'>
+console.log(goal)
+<tr data-id={{goal.id}}>
   <td>{{goal.id}}</td>
   <td>{{goal.title}}</td>
   <td>{{goal.status}}</td>
-  <td><button type="button" id='modify-{{goal.id}}'>
+  <td><button type="button" id='modify-{{goal.id}}' class='modify-button'>
     Modify
   </button></td>
-  <td><button type="button" id='delete-{{goal.id}}'>
+  <td><button type="button" id='delete-{{goal.id}}' class='delete-button'>
     Delete
   </button></td>
 </tr>
