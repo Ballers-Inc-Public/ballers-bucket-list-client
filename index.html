@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Ballers Bucket List</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Balling Bucket List</title>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
       <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -12,33 +14,73 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Baller's Bucket List</h1>
-      <h3>Buckets for Days</h3>
-      <iframe src="https://giphy.com/embed/Z5cXcVX97j9Re" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-      <div class="form group">
-          <form id="sign-up">
-            <fieldset>
-              <legend></legend>
-              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Username should be in the following format: example@email.com" name="credentials[email]" id="sign-up-email" placeholder="Email">
-              <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
-              <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirmation">
-              <input type="submit" name="submit" value="Sign up">
-              <p class="sign-up-message"></p>
-            </fieldset>
-          </form>
+
+    <div class='launch-page'>
+      <div class="jumbotron">
+        <h1>Baller's Bucket List</h1>
+        <h3>Buckets for Days</h3>
+        <div><iframe src="https://giphy.com/embed/Z5cXcVX97j9Re" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+        <a class="btn btn-info btn-lg " data-toggle="modal" data-target="#signUpForm" id="signupbut" href="#" role="button" data-backdrop="static" data-keyboard="false">Sign Up</a>
+        <a class="btn btn-primary btn-lg " data-toggle="modal" data-target="#signInForm" id="signinbut" href="#" role="button" data-backdrop="static" data-keyboard="false">Sign In</a>
+      </div>
+
+        <form id="sign-up" class="form-horizontal">
+      <div class="form-group">
+          <label for="signUpInputEmail" class="col-sm-2 control-label">Email address</label>
+          <div class="col-sm-10">
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Username should be in the following format: example@email.com"
+          name="credentials[email]" id="sign-up-email" placeholder="Email">
         </div>
-          <div class="form group">
-            <form id="sign-in">
-              <fieldset>
-                <legend></legend>
-                <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Email"><br>
-                <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password"><br>
-                <p></p>
-                <input type="submit" name="submit" value="Sign in">
-                <p class="sign-in-message"></p>
-              </fieldset>
-            </form>
         </div>
+        <div class="form-group">
+          <label for="signUpInputPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="signUpInputPasswordConfirm" class="col-sm-2 control-label">Password Confirmation</label>
+          <div class="col-sm-10">
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirmation">
+        </div>
+      </div>
+      <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+
+        <!-- <p class="help-block">Example block-level help text here.</p> -->
+        <button type="submit" class="btn btn-default">Sign Up</button>
+        <!-- <input type="submit" class="btn btn-default" name="submit" value="Sign up"> -->
+      </div>
+    </div>
+      </form>
+
+
+      <form id="sign-in" class="form-horizontal">
+    <div class="form-group">
+        <label for="signInInputEmail" class="col-sm-2 control-label">Email address</label>
+        <div class="col-sm-10">
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Username should be in the following format: example@email.com"
+        name="credentials[email]" id="sign-in-email" placeholder="Email">
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="signInInputPassword" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+        <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+       <!-- <p class="help-block">Example block-level help text here.</p> -->
+      <button type="submit" class="btn btn-default">Sign In</button>
+      <!-- <input type="submit" class="btn btn-default" name="submit" value="Sign in"> -->
+    </div>
+  </div>
+    </form>
+
+</div>
+
+
           <div class="form group">
             <form id="change-password">
               <fieldset>
