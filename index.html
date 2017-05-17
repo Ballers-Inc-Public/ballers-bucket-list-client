@@ -130,14 +130,29 @@
         </div>
         <div class="form-group">
           <label for="changeGoalStatus" class="col-sm-2 control-label">New Status</label>
-          <div class="col-sm-10">
+          <!-- <div class="col-sm-10">
             <input type="text" name="goal[status]" id="modify-goal-status" placeholder="Status of Goal">
-          </div>
+            <ul class="dropdown-menu" aria-labelledby="album-status-select">
+                <li><a href="#" class="status-select">Not Started</a></li>
+                <li><a href="#"  class="status-select">Completed</a></li>
+              </ul>
+          </div> -->
+          <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="goal-status-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+                New Status
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="album-status-select">
+                <li><a href="#" class="status-select">Not Started</a></li>
+                <li><a href="#"  class="status-select">Completed</a></li>
+              </ul>
+            </div>
         </div>
         <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
          <!-- <p class="help-block">Example block-level help text here.</p> -->
         <button type="submit" class="btn btn-default ">Modify Goal</button>
+        <button type="button" id="update-cancel" class="btn btn-default ">Cancel</button>
         <!-- <input type="submit" class="btn btn-default" name="submit" value="Sign in"> -->
         </div>
         </div>

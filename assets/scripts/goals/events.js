@@ -36,6 +36,7 @@ const onUpdateGoal = function (event) {
   event.preventDefault()
   // console.log('Changing password run')
   const data = getFormFields(this)
+  data.goal.status = $('#goal-status-select').text()
   console.log(data)
   data.goal.id = $('#modify-target-record').text()
 
@@ -66,9 +67,15 @@ const onDeleteGoal = function (event) {
     .catch(ui.failure)
 }
 
+const goalStatusSetState = function (event) {
+  event.preventDefault()
+  $('#goal-status-select').text(event.currentTarget.text)
+}
+
 const onLoadUpdateForm = function (event) {
   event.preventDefault()
   const id = $(event.target).parents('tr').attr('data-id')
+  console.log(event)
   $('#modify-target-record').text(id)
   $('#modify-goal').slideToggle()
 }
@@ -77,6 +84,10 @@ const onLoadUpdateForm = function (event) {
 const addHandlers = () => {
   $('#add-goal').on('submit', onCreateGoal)
   $('#modify-goal').on('submit', onUpdateGoal)
+  $('.status-select').on('click', goalStatusSetState)
+  $('#update-cancel').on('click', function () {
+    $('#modify-goal').slideToggle()
+  })
   $(document).on('click', '.delete-button', onDeleteGoal)
   $(document).on('click', '.modify-button', onLoadUpdateForm)
 }
@@ -86,5 +97,6 @@ module.exports = {
   onDeleteGoal,
   onUpdateGoal,
   onCreateGoal,
+  goalStatusSetState,
   onGetGoals
 }
