@@ -56,7 +56,7 @@ These are the diagrams that show how your tables are related to one another.
 (one to many, many to many, ect).
 
 ###Inital ERD
-GET LINK FROM JASON
+https://drive.google.com/file/d/0B7hCYOcpbui5c01kZHBWQWNOcHM/view
 
 ## Routing
 
@@ -77,8 +77,10 @@ A future feature will use the Google Places API, but currently no APIS being use
 Please create a wireframe of your planned front end.
 
 ###Initial Wirefram
-GET LINK FROM JASON
+https://gomockingbird.com/projects/j58e22a/5ePvAI
 
+###Rough UI Wirefram
+http://imgur.com/FgcSXQu
 
 ## Timetable
 
