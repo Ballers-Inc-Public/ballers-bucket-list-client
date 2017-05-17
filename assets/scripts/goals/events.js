@@ -5,86 +5,90 @@ const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
 // Pull Goal List___________________
-const onGetGoals = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
+const onGetGoals = function () {
 
 // API request for index all
-  api.signUp(data)
-  .then(ui.signUpSuccess)
-  .catch(ui.signUpFailure)
-}
-
-// Pull single goal___________________
-const onGetSingleGoal = function (event) {
-  event.preventDefault()
-  // console.log('Sign In run')
-  const data = getFormFields(this)
-
-  api.signIn(data)
-    .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
+  api.getGoals()
+  .then(ui.getGoalsSuccess)
+  .catch(ui.Failure)
 }
 
 // On Create Goal
 const onCreateGoal = function (event) {
   event.preventDefault()
-  // console.log('Sign out run')
   if (store.user === undefined) {
     // console.log('Not signed In')
     return
   }
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+  // console.log('Sign out run')
+  const userId = store.user.id
+  const data = getFormFields(this)
+  console.log(data)
+
+  api.createGoal(data)
+    .then(onGetGoals)
+    .then(ui.createGoalSuccess)
+    .catch(ui.Failure)
 }
-
-
 // On Update goal___________________
 const onUpdateGoal = function (event) {
   event.preventDefault()
   // console.log('Changing password run')
   const data = getFormFields(this)
+  console.log(data)
+  data.goal.id = $('#modify-target-record').text()
 
+  console.log(data)
+  // checking if the title/status fields are populted
   if (
-    data.passwords.old === '' || data.passwords.new === '') {
-    $('#change-pass-blank-field-failure-alert').show()
-    // console.log('No blank fields accepted')
+    data.goal.title === '' || data.goal.status === '') {
+// TODO need to add error message here, waiting on a spot in HTML
+    console.log('no Changes necessary')
     return
   }
 
-  if (
-    data.passwords.old === data.passwords.new) {
-    $('#change-pass-same-password-failure-alert').show()
-    // console.log('same password')
-    return
-  }
-
-  api.changePassword(data)
-    .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure)
+  api.updateGoal(data)
+    .then(ui.updateGoalSucess)
+    .then(onGetGoals)
+    .catch(ui.failure)
 }
 
 // On Delete Goal
 const onDeleteGoal = function (event) {
   event.preventDefault()
-  // console.log('Sign out run')
-  if (store.user === undefined) {
-    // console.log('Not signed In')
-    return
-  }
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+  // HOW DOES THE FUNCTION GET THE ID OF THE GOAL
+  const id = $(event.target).parents('tr').attr('data-id')
+  console.log(id)
+  api.deleteGoal(id)
+    .then(ui.deleteGoalSuccess)
+    .then(onGetGoals)
+    .catch(ui.failure)
 }
+
+const onLoadUpdateForm = function (event) {
+  event.preventDefault()
+  const id = $(event.target).parents('tr').attr('data-id')
+  $('#modify-target-record').text(id)
+}
+
+const onClickGetGoals = function (event) {
+    event.preventDefault()
+    onGetGoals()
+}
+
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('click', onSignOut)
+  $('#add-goal').on('submit', onCreateGoal)
+  $('#modify-goal').on('submit', onUpdateGoal)
+  $(document).on('click', '.delete-button', onDeleteGoal)
+  $(document).on('click', '.modify-button', onLoadUpdateForm)
+  $('#get-all-goals').on('click', onGetGoals)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onDeleteGoal,
+  onUpdateGoal,
+  onCreateGoal,
+  onGetGoals
 }
