@@ -23,31 +23,15 @@ each goal they entered.
 
 ## Goal Data Object
 
-What tables will you need? What will the columns on the table be?
-
-Album {
-Tracks: [track1:, track2]  ,
-Artist: ,
-Year: ,
-Rating (user defined): ,
-Rating (calculated): ,
-Comments: ,
-Album_ID: ,
-Genre:
-}
-
-
-Track {
+Goals {
 title: ,
-length: ,
-rating: ,
-comments:
+status: ,
+owner(user_id): 
 }
 
 User {
-Email:
-Password: ,
-Name:
+Email:,
+Password:
 }
 
 ## Create an ERD (entity relationship diagram)
