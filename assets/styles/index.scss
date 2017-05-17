@@ -1,4 +1,5 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 table {
@@ -17,4 +18,14 @@ td{
 .table-header {
   font-weight: bold;
   background-color: Cyan;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+form {
+  // border: 1px solid black;
+  margin-bottom: 20px;
+  clear:both;
 }

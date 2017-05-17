@@ -28,6 +28,13 @@ const onSignUp = function (event) {
   api.signUp(data)
   .then(ui.signUpSuccess)
   .catch(ui.signUpFailure)
+  // if Sign up works then we will run the sign in API call to skip that step
+  .then(() => {
+    console.log('this is what is passed', data)
+    api.signIn(data)
+      .then(ui.signInSuccess)
+      .catch(ui.signInFailure)
+  })
 }
 
 // SIGNIN FUNTIONALITY LAUNCHED WHEN CLICKED IN MODAL___________________
@@ -43,7 +50,7 @@ const onSignIn = function (event) {
     $('#sign-in-blank-field-failure-alert').show()
     return
   }
-
+  console.log('this is what is passed to sign in', data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -87,12 +94,32 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onToggleSignUp = function () {
+  $('#sign-up').slideToggle()
+}
+
+const onToggleSignIn = function () {
+  $('#sign-in').slideToggle()
+}
+
+const onToggleChangePWord = function () {
+  $('#change-password').slideToggle()
+}
+
+const onToggleAddGoal = function () {
+  $('#add-goal').slideToggle()
+}
+
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
+  $('#jumbo-signup-but').on('click', onToggleSignUp)
+  $('#jumbo-signin-but').on('click', onToggleSignIn)
+  $('#jumbo-changepass-but').on('click', onToggleChangePWord)
+  $('#toggle-add-goal-form').on('click', onToggleAddGoal)
 }
 
 module.exports = {

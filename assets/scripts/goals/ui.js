@@ -6,7 +6,7 @@ const showGoals = require('../templates/goal.handlebars')
 const getGoalsSuccess = (data) => {
   console.log('Get goals was successful')
   console.log('Your data looks likes', data)
-  $('#display-goals').html('<tr class="table-header"><td>ID</td><td>Title</td><td>Status</td><td>Modify</td><td>Delete</td></tr>')
+  $('#display-goals').html('<tr class="table-header"><td>Title</td><td>Status</td><td>Modify</td><td>Delete</td></tr>')
   $('#display-goals').append(showGoals(data))
 }
 

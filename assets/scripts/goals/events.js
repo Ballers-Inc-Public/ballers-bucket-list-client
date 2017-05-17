@@ -23,6 +23,7 @@ const onCreateGoal = function (event) {
   // console.log('Sign out run')
   const userId = store.user.id
   const data = getFormFields(this)
+  data.goal.status = 'Not Started'
   console.log(data)
 
   api.createGoal(data)
@@ -69,11 +70,7 @@ const onLoadUpdateForm = function (event) {
   event.preventDefault()
   const id = $(event.target).parents('tr').attr('data-id')
   $('#modify-target-record').text(id)
-}
-
-const onClickGetGoals = function (event) {
-    event.preventDefault()
-    onGetGoals()
+  $('#modify-goal').slideToggle()
 }
 
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
@@ -82,7 +79,6 @@ const addHandlers = () => {
   $('#modify-goal').on('submit', onUpdateGoal)
   $(document).on('click', '.delete-button', onDeleteGoal)
   $(document).on('click', '.modify-button', onLoadUpdateForm)
-  $('#get-all-goals').on('click', onGetGoals)
 }
 
 module.exports = {
