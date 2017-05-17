@@ -99,7 +99,7 @@ https://ballers-inc-public.github.io/ballers-bucket-list-client/
 https://github.com/Ballers-Inc-Public/ballers-bucket-list-api
 
 ## Dependencies
-
+git
 Install with `npm install`.
 
 -   [Webpack](https://webpack.github.io)
