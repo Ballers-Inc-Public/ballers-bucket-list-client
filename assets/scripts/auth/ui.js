@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const goals = require('../goals/events')
 
 // Sign UP SUCCESS AND FAILURE MESSAGING ________________________
 const signUpSuccess = (data) => {
@@ -23,6 +24,8 @@ const signInSuccess = (data) => {
   store.user = data.user
   console.log('Store looks like ', store)
   $('#sign-in').trigger('reset')
+  signInSuccessRenderUI()
+  goals.onGetGoals()
 }
 
 const signInFailure = (error) => {
@@ -54,11 +57,24 @@ const signOutSuccess = () => {
   store.user_ratings = null
 
   console.log('Store looks like ', store)
+  signOutSuccessRenderUI()
 }
 
 const signOutFailure = (error) => {
   console.error('signOut error ran, error is: ', error)
   console.log('Store looks like ', store)
+}
+
+const signInSuccessRenderUI = function ()  {
+  $('form').hide()
+  $('.hide-on-initial-load').show()
+  $('.hide-on-sign-in').hide()
+}
+
+const signOutSuccessRenderUI = function ()  {
+  $('form').hide()
+  $('.hide-on-initial-load').hide()
+  $('.hide-on-sign-in').show()
 }
 
 module.exports = {

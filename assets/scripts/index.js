@@ -9,7 +9,13 @@ $(() => {
   setAPIOrigin(location, config)
   auth.addHandlers()
   goals.addHandlers()
+  onInitialPageLoadHide()
 })
+
+const onInitialPageLoadHide = function () {
+  $('form').hide()
+  $('.hide-on-initial-load').hide()
+}
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')

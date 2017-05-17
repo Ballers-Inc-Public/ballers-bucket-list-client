@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://afternoon-reef-18895.herokuapp.com/'
+    production: 'https://afternoon-reef-18895.herokuapp.com'
   }
 }
 

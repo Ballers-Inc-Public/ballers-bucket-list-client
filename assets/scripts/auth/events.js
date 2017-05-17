@@ -94,12 +94,32 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onToggleSignUp = function () {
+  $('#sign-up').slideToggle()
+}
+
+const onToggleSignIn = function () {
+  $('#sign-in').slideToggle()
+}
+
+const onToggleChangePWord = function () {
+  $('#change-password').slideToggle()
+}
+
+const onToggleAddGoal = function () {
+  $('#add-goal').slideToggle()
+}
+
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
+  $('#jumbo-signup-but').on('click', onToggleSignUp)
+  $('#jumbo-signin-but').on('click', onToggleSignIn)
+  $('#jumbo-changepass-but').on('click', onToggleChangePWord)
+  $('#toggle-add-goal-form').on('click', onToggleAddGoal)
 }
 
 module.exports = {
