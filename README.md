@@ -26,7 +26,7 @@ each goal they entered.
 Goals {
 title: ,
 status: ,
-owner(user_id): 
+owner(user_id):
 }
 
 User {
