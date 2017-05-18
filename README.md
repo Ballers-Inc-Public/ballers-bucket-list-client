@@ -61,11 +61,18 @@ A future feature will use the Google Places API, but currently no APIS being use
 
 Please create a wireframe of your planned front end.
 
-### Initial Wirefram
+### Initial Wireframe
 
-https://gomockingbird.com/projects/j58e22a/5ePvAI
+Landing page
+http://imgur.com/a/r1ofH
 
-### Rough UI Wirefram
+Input screen
+http://imgur.com/a/KmwuP
+
+Goals screen
+http://imgur.com/a/KvbqW
+
+### Rough UI Wireframe
 
 http://imgur.com/FgcSXQu
 
