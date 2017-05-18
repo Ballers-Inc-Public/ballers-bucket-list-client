@@ -4,9 +4,10 @@ const store = require('../store')
 const goals = require('../goals/events')
 
 const resetUserForms = function () {
-    $('#sign-up').trigger('reset')
-    $('#sign-in').trigger('reset')
-    $('#change-password').trigger('reset')
+  $('.alert').hide()
+  $('#sign-up').trigger('reset')
+  $('#sign-in').trigger('reset')
+  $('#change-password').trigger('reset')
 }
 // Sign UP SUCCESS AND FAILURE MESSAGING ________________________
 const signUpSuccess = (data) => {
@@ -22,7 +23,7 @@ const signUpFailure = (error) => {
 
   $('#sign-up-failure-alert').show()
   $('#signup-failure-message').text('Oh No. Someone may already taken that email. Try Signing in')
-  $('.loader').hide()
+  $('.loader').show()
   console.log('Store looks like ', store)
 }
 
@@ -118,5 +119,6 @@ module.exports = {
   signOutFailure,
   signOutSuccess,
   changePasswordFailure,
-  changePasswordSuccess
+  changePasswordSuccess,
+  resetUserForms
 }

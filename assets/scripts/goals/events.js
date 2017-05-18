@@ -81,6 +81,7 @@ const goalStatusSetState = function (event) {
 
 const onLoadUpdateForm = function (event) {
   event.preventDefault()
+  $('.alert').hide()
   const id = $(event.target).parents('tr').attr('data-id')
   console.log(event)
   $('#modify-target-record').text(id)
@@ -96,6 +97,7 @@ const addHandlers = () => {
   $('#modify-goal').on('submit', onUpdateGoal)
   $('.status-select').on('click', goalStatusSetState)
   $('#update-cancel').on('click', function () {
+    $('.alert').hide()
     $('#modify-goal').slideToggle()
   })
   $(document).on('click', '.delete-button', onDeleteGoal)
