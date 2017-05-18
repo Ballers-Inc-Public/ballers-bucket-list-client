@@ -23,7 +23,7 @@ const signUpFailure = (error) => {
 
   $('#sign-up-failure-alert').show()
   $('#signup-failure-message').text('Oh No. Someone may already taken that email. Try Signing in')
-  $('.loader').show()
+  $('.loader').hide()
   console.log('Store looks like ', store)
 }
 
