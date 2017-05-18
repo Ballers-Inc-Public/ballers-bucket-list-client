@@ -8,28 +8,16 @@ const signUp = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
-    // beforeSend: function () {
-    //   $('loader').show()
-    // },
-    // complete: function () {
-    //   $('.loader').hide()
-    // },
     data
   })
 }
 
 // SIGNIN AJAX CREATES  A TOKEN___________________
 const signIn = (data) => {
-  // console.log('signIn check')
+  // //console.log('signIn check')
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
-    // beforeSend: function () {
-    //   $('loader').show()
-    // },
-    // complete: function () {
-    //   $('.loader').hide()
-    // },
     data
     // data : data
 
@@ -38,7 +26,7 @@ const signIn = (data) => {
 
 // SIGNOUT AJAX DELETES A TOKEN___________________
 const signOut = () => {
-  // console.log('signOut check')
+  // //console.log('signOut check')
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
     method: 'DELETE',
@@ -56,8 +44,8 @@ const signOut = () => {
 
 // CHANGE PASSWORD AJAX MODIFIES THE PASSWORDS OBJECT___________________
 const changePassword = (data) => {
-  // console.log('data is ', data)
-  // console.log('signIn check')
+  // //console.log('data is ', data)
+  // //console.log('signIn check')
   return $.ajax({
     url: config.apiOrigin + '/change-password/' + store.user.id,
     method: 'PATCH',

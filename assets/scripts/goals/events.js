@@ -17,10 +17,10 @@ const onCreateGoal = function (event) {
   event.preventDefault()
   $('.alert').hide()
   if (store.user === undefined) {
-    // console.log('Not signed In')
+    // //console.log('Not signed In')
     return
   }
-  // console.log('Sign out run')
+  // //console.log('Sign out run')
   const userId = store.user.id
   const data = getFormFields(this)
   if (data.goal.title === '') {
@@ -29,7 +29,7 @@ const onCreateGoal = function (event) {
     return
   }
   data.goal.status = 'Not Started'
-  console.log(data)
+  //console.log(data)
 
   api.createGoal(data)
     .then(onGetGoals)
@@ -40,13 +40,13 @@ const onCreateGoal = function (event) {
 const onUpdateGoal = function (event) {
   event.preventDefault()
   $('.alert').hide()
-  // console.log('Changing password run')
+  // //console.log('Changing password run')
   const data = getFormFields(this)
   data.goal.status = $('#goal-status-select').text()
-  console.log(data)
+  //console.log(data)
   data.goal.id = $('#modify-target-record').text()
 
-  console.log(data)
+  //console.log(data)
   // checking if the title/status fields are populted
   if (
     data.goal.title === $('#title-' + data.goal.id).text() && data.goal.status === $('#status-' + data.goal.id).text()) {
@@ -67,7 +67,7 @@ const onDeleteGoal = function (event) {
   event.preventDefault()
   // HOW DOES THE FUNCTION GET THE ID OF THE GOAL
   const id = $(event.target).parents('tr').attr('data-id')
-  console.log(id)
+  //console.log(id)
   api.deleteGoal(id)
     .then(ui.deleteGoalSuccess)
     .then(onGetGoals)
@@ -83,7 +83,7 @@ const onLoadUpdateForm = function (event) {
   event.preventDefault()
   $('.alert').hide()
   const id = $(event.target).parents('tr').attr('data-id')
-  console.log(event)
+  //console.log(event)
   $('#modify-target-record').text(id)
   $('#modify-goal-title').val($('#title-' + id).text())
   $('#goal-status-select').text($('#status-' + id).text())

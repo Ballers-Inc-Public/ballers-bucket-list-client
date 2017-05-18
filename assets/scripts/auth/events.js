@@ -10,11 +10,10 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   // Criteria Check
   $('.alert').hide()
-  $('.loader').fadeIn(1000)
 // Blank Field Check
   if (
     data.credentials.password === '' || data.credentials.password_confirmation === '' || data.email === '') {
-    console.log('Blank Fields')
+    //console.log('Blank Fields')
     $('#sign-up-failure-alert').show()
     $('#signup-failure-message').text('Oh No. You have blank fields')
 
@@ -23,18 +22,19 @@ const onSignUp = function (event) {
 
 // Password Match Check
   if (data.credentials.password !== data.credentials.password_confirmation) {
-    // console.log('Your passwords do not match')
+    // //console.log('Your passwords do not match')
     $('#sign-up-failure-alert').show()
     $('#signup-failure-message').text('Oh No. Your passwords dont match')
 
     return
   }
+  $('.loader').fadeIn(1000)
 // Create User API request
   api.signUp(data)
   .then(ui.signUpSuccess)
   // if Sign up works then we will run the sign in API call to skip that step
   .then(() => {
-    console.log('this is what is passed', data)
+    //console.log('this is what is passed', data)
     api.signIn(data)
       .then(ui.signInSuccess)
       .catch(ui.signInFailure)
@@ -45,20 +45,20 @@ const onSignUp = function (event) {
 // SIGNIN FUNTIONALITY LAUNCHED WHEN CLICKED IN MODAL___________________
 const onSignIn = function (event) {
   event.preventDefault()
-  // console.log('Sign In run')
+  // //console.log('Sign In run')
   $('.alert').hide()
-  $('.loader').fadeIn(1000)
   const data = getFormFields(this)
   // Criteria Check
 
 // Blank Field Check
   if (
     data.credentials.email === '' || data.credentials.password === '') {
-      $('#sign-in-failure-alert').show()
-      $('#signin-failure-message').text('You seem to have some blank fields. Please try again')
+    $('#sign-in-failure-alert').show()
+    $('#signin-failure-message').text('You seem to have some blank fields. Please try again')
     return
   }
-  console.log('this is what is passed to sign in', data)
+  //console.log('this is what is passed to sign in', data)
+  $('.loader').fadeIn(1000)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -67,10 +67,9 @@ const onSignIn = function (event) {
 // CHANGE PASSWORD FUNTIONALITY LAUNCHED WHEN CLICKED IN MODAL___________________
 const onChangePassword = function (event) {
   event.preventDefault()
-  // console.log('Changing password run')
+  // //console.log('Changing password run')
   const data = getFormFields(this)
   $('.alert').hide()
-  $('.loader').fadeIn(1000)
   if (
     data.passwords.old === '' || data.passwords.new === '') {
     $('#change-pass-failure-alert').show()
@@ -84,7 +83,7 @@ const onChangePassword = function (event) {
     $('#change-pass-failure-message').text('Your new passwords and old passwords seem to match. Please try changing them')
     return
   }
-
+  $('.loader').fadeIn(1000)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -94,9 +93,9 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   event.preventDefault()
   $('.alert').hide()
-  // console.log('Sign out run')
+  // //console.log('Sign out run')
   if (store.user === undefined) {
-    // console.log('Not signed In')
+    // //console.log('Not signed In')
     return
   }
   api.signOut()

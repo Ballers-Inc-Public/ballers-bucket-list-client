@@ -15,12 +15,12 @@ const limitGoalsToCurrentUser = function (data) {
 }
 
 const getGoalsSuccess = (data) => {
-  console.log('Get goals was successful')
-  console.log('Your data looks likes', data)
+  //console.log('Get goals was successful')
+  //console.log('Your data looks likes', data)
   const dataForHandlebars = {}
   dataForHandlebars.goals = limitGoalsToCurrentUser(data.goals)
-  console.log('goals limited to user', dataForHandlebars)
-  console.log('users has THIS may goals ', dataForHandlebars.goals.length)
+  //console.log('goals limited to user', dataForHandlebars)
+  //console.log('users has THIS may goals ', dataForHandlebars.goals.length)
   if (dataForHandlebars.goals.length === 0) {
     $('#no-goals-alert').show()
   } else { $('#no-goals-alert').hide() }
@@ -29,25 +29,25 @@ const getGoalsSuccess = (data) => {
 }
 
 const createGoalSuccess = (data) => {
-  console.log('Create goal was successful')
-  console.log('Your data looks likes', data)
+  //console.log('Create goal was successful')
+  //console.log('Your data looks likes', data)
   resetGoalForms()
 }
 
 const updateGoalSucess = function (data) {
-  console.log('You updated a goal...whoop')
+  //console.log('You updated a goal...whoop')
   resetGoalForms()
   $('#modify-target-record').text('')
   $('#modify-goal').slideToggle()
 }
 
 const deleteGoalSuccess = function () {
-  console.log('you deleted a goal...YAY...IGuess!')
+  //console.log('you deleted a goal...YAY...IGuess!')
 }
 
 const failure = function (error) {
-  console.log(error)
-  console.log("That didn't work...")
+  //console.log(error)
+  //console.log("That didn't work...")
 }
 
 module.exports = {
