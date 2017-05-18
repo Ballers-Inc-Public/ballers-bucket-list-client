@@ -69,6 +69,7 @@ const signInSuccessRenderUI = function ()  {
   $('form').hide()
   $('.hide-on-initial-load').show()
   $('.hide-on-sign-in').hide()
+  $('#map').show()
 }
 
 const signOutSuccessRenderUI = function ()  {
