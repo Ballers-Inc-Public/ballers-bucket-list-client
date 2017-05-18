@@ -8,6 +8,12 @@ const signUp = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     data
   })
 }
@@ -18,6 +24,12 @@ const signIn = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     data
     // data : data
 
@@ -30,6 +42,12 @@ const signOut = () => {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
     method: 'DELETE',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -43,6 +61,12 @@ const changePassword = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/change-password/' + store.user.id,
     method: 'PATCH',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     data,
     headers: {
       Authorization: 'Token token=' + store.user.token

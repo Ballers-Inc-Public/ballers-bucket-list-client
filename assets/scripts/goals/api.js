@@ -8,6 +8,12 @@ const getGoals = function () {
   return $.ajax({
     url: config.apiOrigin + '/goals',
     method: 'GET',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -19,6 +25,12 @@ const createGoal = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/goals',
     method: 'POST',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -28,6 +40,12 @@ const createGoal = function (data) {
 const updateGoal = function (data) {
   return $.ajax({
     method: 'PATCH',
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     url: config.apiOrigin + '/goals/' + data.goal.id,
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -40,6 +58,12 @@ const deleteGoal = function (id) {
   return $.ajax({
     method: 'DELETE',
     url: config.apiOrigin + '/goals/' + id,
+    beforeSend: function () {
+      $('loader').show()
+    },
+    complete: function () {
+      $('.loader').hide()
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }

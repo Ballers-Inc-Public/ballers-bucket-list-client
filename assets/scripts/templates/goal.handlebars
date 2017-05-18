@@ -4,8 +4,8 @@
 
 console.log(goal)
 <tr data-id={{goal.id}}>
-  <td>{{goal.title}}</td>
-  <td>{{goal.status}}</td>
+  <td id='title-{{goal.id}}'>{{goal.title}}</td>
+  <td id='status-{{goal.id}}'>{{goal.status}}</td>
   <td><button type="button" id='modify-{{goal.id}}' class='modify-button'>
     Modify
   </button></td>

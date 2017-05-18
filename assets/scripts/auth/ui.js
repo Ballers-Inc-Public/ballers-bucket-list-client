@@ -8,13 +8,14 @@ const signUpSuccess = (data) => {
   console.log('User sucessfully created:', data)
   console.log('Store looks like ', store)
   $('#sign-up').trigger('reset')
+  $('.alert').hide()
 }
 
 const signUpFailure = (error) => {
-  if (error.error.responseText === '{"email":["has already been taken"]}') {
-    console.log('email already taken')
-    return
-  }
+  console.log(error)
+
+  $('#sign-up-failure-alert').show()
+  $('#signup-failure-message').text('Oh No. Someone may already taken that email. Try Signing in')
   console.log('Store looks like ', store)
 }
 
@@ -26,10 +27,18 @@ const signInSuccess = (data) => {
   $('#sign-in').trigger('reset')
   signInSuccessRenderUI()
   goals.onGetGoals()
+  $('.alert').hide()
 }
 
 const signInFailure = (error) => {
   console.error('signIn error ran, error is: ', error)
+  if (error.responseText === '{"error":{"message":"Not Authorized","error":{}}}') {
+    $('#sign-in-failure-alert').show()
+    $('#signin-failure-message').text('UNAUTHORIZED. Check your password.')
+  }
+
+  $('#sign-in-failure-alert').show()
+  $('#signin-failure-message').text('Unknown error. Try again.')
   console.log(error.statusText)
   console.log('Store looks like ', store)
 }
@@ -40,10 +49,14 @@ const changePasswordSuccess = (data) => {
   console.log('Password was succesfully changed, data is: ', data)
   console.log('Store looks like ', store)
   $('#change-password').trigger('reset')
+  $('.alert').hide()
 }
 
 const changePasswordFailure = (error) => {
   console.log('Password was not succesfully changed', error)
+  $('#change-pass-failure-alert').show()
+  $('#change-pass-failure-message').text('You were unable to change your password. Check your entries and try again')
+  console.log(error.statusText)
   console.log('Store looks like ', store)
 }
 
@@ -58,6 +71,7 @@ const signOutSuccess = () => {
 
   console.log('Store looks like ', store)
   signOutSuccessRenderUI()
+  $('.alert').hide()
 }
 
 const signOutFailure = (error) => {
@@ -69,12 +83,14 @@ const signInSuccessRenderUI = function ()  {
   $('form').hide()
   $('.hide-on-initial-load').show()
   $('.hide-on-sign-in').hide()
+  $('.alert').hide()
 }
 
 const signOutSuccessRenderUI = function ()  {
   $('form').hide()
   $('.hide-on-initial-load').hide()
   $('.hide-on-sign-in').show()
+  $('.alert').hide()
 }
 
 module.exports = {
