@@ -54,6 +54,7 @@ const changePasswordSuccess = (data) => {
   console.log('Password was succesfully changed, data is: ', data)
   console.log('Store looks like ', store)
   $('.alert').hide()
+  $('#change-password').hide()
   resetUserForms()
 }
 
