@@ -16,6 +16,7 @@ const onGetGoals = function () {
 // On Create Goal
 const onCreateGoal = function (event) {
   event.preventDefault()
+  $('.alert').hide()
   if (store.user === undefined) {
     // console.log('Not signed In')
     return
@@ -23,6 +24,11 @@ const onCreateGoal = function (event) {
   // console.log('Sign out run')
   const userId = store.user.id
   const data = getFormFields(this)
+  if (data.goal.title === '') {
+    $('#add-goal-failure-alert').show()
+    $('#add-goal-failure-message').text('You need to add a name to your goal')
+    return
+  }
   data.goal.status = 'Not Started'
   console.log(data)
 
@@ -34,6 +40,7 @@ const onCreateGoal = function (event) {
 // On Update goal___________________
 const onUpdateGoal = function (event) {
   event.preventDefault()
+  $('.alert').hide()
   // console.log('Changing password run')
   const data = getFormFields(this)
   data.goal.status = $('#goal-status-select').text()
@@ -45,7 +52,8 @@ const onUpdateGoal = function (event) {
   if (
     data.goal.title === $('#title-' + data.goal.id).text() && data.goal.status === $('#status-' + data.goal.id).text()) {
 // TODO need to add error message here, waiting on a spot in HTML
-    $('.help-block-modify').text('No Changes were made')
+    $('#mod-goal-failure-alert').show()
+    $('#mod-goal-failure-message').text('You need to make a change to your goal to update it.')
     return
   }
 
