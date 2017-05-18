@@ -10,7 +10,7 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   // Criteria Check
   $('.alert').hide()
-
+  $('.loader').fadeIn(1000)
 // Blank Field Check
   if (
     data.credentials.password === '' || data.credentials.password_confirmation === '' || data.email === '') {
@@ -29,7 +29,6 @@ const onSignUp = function (event) {
 
     return
   }
-
 // Create User API request
   api.signUp(data)
   .then(ui.signUpSuccess)
@@ -48,6 +47,7 @@ const onSignIn = function (event) {
   event.preventDefault()
   // console.log('Sign In run')
   $('.alert').hide()
+  $('.loader').fadeIn(1000)
   const data = getFormFields(this)
   // Criteria Check
 
@@ -70,6 +70,7 @@ const onChangePassword = function (event) {
   // console.log('Changing password run')
   const data = getFormFields(this)
   $('.alert').hide()
+  $('.loader').fadeIn(1000)
   if (
     data.passwords.old === '' || data.passwords.new === '') {
     $('#change-pass-failure-alert').show()

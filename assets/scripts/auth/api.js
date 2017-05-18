@@ -8,12 +8,12 @@ const signUp = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
-    beforeSend: function () {
-      $('loader').show()
-    },
-    complete: function () {
-      $('.loader').hide()
-    },
+    // beforeSend: function () {
+    //   $('loader').show()
+    // },
+    // complete: function () {
+    //   $('.loader').hide()
+    // },
     data
   })
 }
@@ -24,12 +24,12 @@ const signIn = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
-    beforeSend: function () {
-      $('loader').show()
-    },
-    complete: function () {
-      $('.loader').hide()
-    },
+    // beforeSend: function () {
+    //   $('loader').show()
+    // },
+    // complete: function () {
+    //   $('.loader').hide()
+    // },
     data
     // data : data
 
