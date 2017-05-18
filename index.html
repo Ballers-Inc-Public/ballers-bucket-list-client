@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Balling Bucket List</title>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+
+    <div class='launch-page'>
+      <div class="jumbotron">
+        <h1>Baller's Bucket List</h1>
+        <h3>Buckets for Days</h3>
+        <div><iframe src="https://giphy.com/embed/Z5cXcVX97j9Re" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+        <a class="btn btn-info btn-lg jumbotron-button hide-on-sign-in" id="jumbo-signup-but" href="#" role="button" >Sign Up</a>
+        <a class="btn btn-primary btn-lg jumbotron-button hide-on-sign-in" id="jumbo-signin-but" href="#" role="button">Sign In</a>
+        <a class="btn btn-warning btn-lg jumbotron-button hide-on-initial-load" id="jumbo-changepass-but" href="#" role="button" >Change Password</a>
+        <a class="btn btn-danger btn-lg jumbotron-button hide-on-initial-load" id="sign-out" href="#" role="button">Sign Out</a>
+      </div>
+      <div class="loader">
+            <img src="https://www.createwebsite.net/wp-content/uploads/2015/09/GD.gif"></img>
+      </div>
+        <form id="sign-up" class="form-horizontal">
+      <div class="form-group">
+          <label for="signUpInputEmail" class="col-sm-2 control-label">Email address</label>
+          <div class="col-sm-10">
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Username should be in the following format: example@email.com"
+          name="credentials[email]" id="sign-up-email" placeholder="Email">
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="signUpInputPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="signUpInputPasswordConfirm" class="col-sm-2 control-label">Password Confirmation</label>
+          <div class="col-sm-10">
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirmation">
+        </div>
+      </div>
+      <div class="form-group">
+        <div id="sign-up-failure-alert" class="alert alert-danger signup-alert hide-on-initial-load" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+            <span class="sr-only">Uh oh!:</span>
+            <span id="signup-failure-message">Hell if I know! You are a rare bread!</span>
+        </div>
+      <div class="col-sm-offset-2 col-sm-10">
+
+        <!-- <p class="help-block">Example block-level help text here.</p> -->
+        <button type="submit" class="btn btn-default">Sign Up</button>
+        <!-- <input type="submit" class="btn btn-default" name="submit" value="Sign up"> -->
+      </div>
+    </div>
+      </form>
+
+
+      <form id="sign-in" class="form-horizontal">
+    <div class="form-group">
+        <label for="signInInputEmail" class="col-sm-2 control-label">Email address</label>
+        <div class="col-sm-10">
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Username should be in the following format: example@email.com"
+        name="credentials[email]" id="sign-in-email" placeholder="Email">
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="signInInputPassword" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+        <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div id="sign-in-failure-alert" class="alert alert-danger hide-on-initial-load signin-alert " role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+            <span class="sr-only">Uh oh!:</span>
+            <span id="signin-failure-message">Hell if I know! You are a rare bread!</span>
+        </div>
+       <!-- <p class="help-block">Example block-level help text here.</p> -->
+      <button type="submit" class="btn btn-default">Sign In</button>
+      <!-- <input type="submit" class="btn btn-default" name="submit" value="Sign in"> -->
+    </div>
+  </div>
+    </form>
+
+</div>
+
+<div class="goal-ui hide-on-initial-load">
+
+<form id="change-password" class="form-horizontal">
+<div class="form-group">
+  <label for="changePasswordInputOldPassword" class="col-sm-2 control-label">Old Password</label>
+  <div class="col-sm-10">
+  <input type="password" name="passwords[old]" id="change-password-old" placeholder="Old Password">
+</div>
+</div>
+<div class="form-group">
+  <label for="changePasswordInputNewPassword" class="col-sm-2 control-label">New Password</label>
+  <div class="col-sm-10">
+  <input type="password" name="passwords[new]" id="change-password-new" placeholder="New Password">
+  </div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+  <div id="change-pass-failure-alert" class="alert alert-danger hide-on-initial-loadchange-pass-alert" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+      <span class="sr-only">Uh oh!:</span>
+      <span id="change-pass-failure-message">Hell if I know! You are a rare bread!</span>
+  </div>
+ <!-- <p class="help-block">Example block-level help text here.</p> -->
+<button type="submit" class="btn btn-default ">Change Password</button>
+<!-- <input type="submit" class="btn btn-default" name="submit" value="Sign in"> -->
+</div>
+</div>
+</form>
+
+
+
+<div class="col-sm-offset-2 col-sm-10">
+  <div id="no-goals-alert" class="alert bg-warning hide-on-initial-load no-goals-alert " role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+      <span id="signin-failure-message">Add some goals, to start balling!</span>
+  </div>
+</div>
+
+
+        <form id="add-goal" class="form-inline hide-on-initial-load">
+        <div class="form-group">
+          <label for="addGoalTitle">What's your Goal</label>
+          <input type="text" class="form-control" name="goal[title]" id="add-goal-title" placeholder="Name your goal">
+        </div>
+        <div id="add-goal-failure-alert" class="alert alert-danger hide-on-initial-load add-goal-alert" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+            <span class="sr-only">Uh oh!:</span>
+            <span id="add-goal-failure-message">Hell if I know! You are a rare bread!</span>
+        </div>
+         <!-- <p class="help-block">Example block-level help text here.</p> -->
+        <button type="submit" class="btn btn-default ">Add Goal</button>
+        </form>
+
+        <form id="modify-goal" class="form-horizontal">
+        <label class="col-sm-2 control-label">Current Record</label>
+          <p id='modify-target-record'><p>
+        <div class="form-group">
+          <label for="changeGoalTitle" class="col-sm-2 control-label">New Title:</label>
+          <div class="col-sm-10">
+            <input type="text" name="goal[title]" id="modify-goal-title" placeholder="What is the Title of your goal">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="changeGoalStatus" class="col-sm-2 control-label">New Status</label>
+          <!-- <div class="col-sm-10">
+            <input type="text" name="goal[status]" id="modify-goal-status" placeholder="Status of Goal">
+            <ul class="dropdown-menu" aria-labelledby="album-status-select">
+                <li><a href="#" class="status-select">Not Started</a></li>
+                <li><a href="#"  class="status-select">Completed</a></li>
+              </ul>
+          </div> -->
+          <div class="btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" id="goal-status-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+                New Status
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="goal-status-select">
+                <li><a href="#" class="status-select">Not Started</a></li>
+                <li><a href="#"  class="status-select">Completed</a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div id="mod-goal-failure-alert" class="alert alert-danger hide-on-initial-load mod-goal-alert" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign " aria-hidden="true"></span>
+              <span class="sr-only">Uh oh!:</span>
+              <span id="mod-goal-failure-message">Hell if I know! You are a rare bread!</span>
+          </div>
+
+        </div>
+        <div class="col-sm-offset-2 col-sm-10 modify-buttons">
+        <button type="submit" class="btn btn-default ">Modify Goal</button>
+        <button type="button" id="update-cancel" class="btn btn-default">Cancel</button>
+        <!-- <input type="submit" class="btn btn-default" name="submit" value="Sign in"> -->
+      </div>
+        </div>
+
+        </form>
+
+        <h4> Here are your Goals</h4>
+
+
+
+
+<table id='display-goals'>
+  <tr class="table-header">
+    <td>Title</td>
+    <td>Status</td>
+    <td>Modify</td>
+    <td>Delete</td>
+  </tr>
+
+</table>
+
+        </div>
+
+    </body>
+</html>
