@@ -3,6 +3,11 @@
 const store = require('../store')
 const showGoals = require('../templates/goal.handlebars')
 
+const resetGoalForms = function () {
+  $('#modify-goal').trigger('reset')
+  $('#add-goal').trigger('reset')
+}
+
 const limitGoalsToCurrentUser = function (data) {
   const userOnlyData = []
   data.forEach((e) => { if (e.editable) { userOnlyData.push(e) } })
@@ -22,13 +27,13 @@ const getGoalsSuccess = (data) => {
 const createGoalSuccess = (data) => {
   console.log('Create goal was successful')
   console.log('Your data looks likes', data)
-  $('#add-goal').trigger('reset')
+  resetGoalForms()
 }
 
 const updateGoalSucess = function (data) {
   console.log('You updated a goal...whoop')
+  resetGoalForms()
   $('#modify-target-record').text('')
-  $('#modify-goal').trigger('reset')
   $('#modify-goal').slideToggle()
 }
 
