@@ -6,7 +6,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 // Pull Goal List___________________
 const onGetGoals = function () {
-
 // API request for index all
   api.getGoals()
   .then(ui.getGoalsSuccess)

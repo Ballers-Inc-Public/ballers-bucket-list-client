@@ -13,6 +13,7 @@ const signUpSuccess = (data) => {
   console.log('User sucessfully created:', data)
   console.log('Store looks like ', store)
   $('.alert').hide()
+  $('.loader').hide()
   resetUserForms()
 }
 
@@ -21,6 +22,7 @@ const signUpFailure = (error) => {
 
   $('#sign-up-failure-alert').show()
   $('#signup-failure-message').text('Oh No. Someone may already taken that email. Try Signing in')
+  $('.loader').hide()
   console.log('Store looks like ', store)
 }
 
@@ -32,6 +34,7 @@ const signInSuccess = (data) => {
   signInSuccessRenderUI()
   goals.onGetGoals()
   $('.alert').hide()
+  $('.loader').hide()
   resetUserForms()
 }
 
@@ -40,10 +43,12 @@ const signInFailure = (error) => {
   if (error.responseText === '{"error":{"message":"Not Authorized","error":{}}}') {
     $('#sign-in-failure-alert').show()
     $('#signin-failure-message').text('UNAUTHORIZED. Check your password.')
+    $('.loader').hide()
   }
 
   $('#sign-in-failure-alert').show()
   $('#signin-failure-message').text('Unknown error. Try again.')
+  $('.loader').hide()
   console.log(error.statusText)
   console.log('Store looks like ', store)
 }
@@ -55,6 +60,7 @@ const changePasswordSuccess = (data) => {
   console.log('Store looks like ', store)
   $('.alert').hide()
   $('#change-password').hide()
+  $('.loader').hide()
   resetUserForms()
 }
 
@@ -62,6 +68,7 @@ const changePasswordFailure = (error) => {
   console.log('Password was not succesfully changed', error)
   $('#change-pass-failure-alert').show()
   $('#change-pass-failure-message').text('You were unable to change your password. Check your entries and try again')
+  $('.loader').hide()
   console.log(error.statusText)
   console.log('Store looks like ', store)
 }
@@ -78,11 +85,13 @@ const signOutSuccess = () => {
   console.log('Store looks like ', store)
   signOutSuccessRenderUI()
   $('.alert').hide()
+  $('.loader').hide()
 }
 
 const signOutFailure = (error) => {
   console.error('signOut error ran, error is: ', error)
   console.log('Store looks like ', store)
+  $('.loader').hide()
 }
 
 const signInSuccessRenderUI = function () {
@@ -90,6 +99,7 @@ const signInSuccessRenderUI = function () {
   $('.hide-on-initial-load').show()
   $('.hide-on-sign-in').hide()
   $('.alert').hide()
+  $('.loader').hide()
 }
 
 const signOutSuccessRenderUI = function () {
@@ -97,6 +107,7 @@ const signOutSuccessRenderUI = function () {
   $('.hide-on-initial-load').hide()
   $('.hide-on-sign-in').show()
   $('.alert').hide()
+  $('.loader').hide()
 }
 
 module.exports = {
