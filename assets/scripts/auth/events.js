@@ -120,7 +120,6 @@ const addHandlers = () => {
   $('#jumbo-signin-but').on('click', onToggleSignIn)
   $('#jumbo-changepass-but').on('click', onToggleChangePWord)
   $('#toggle-add-goal-form').on('click', onToggleAddGoal)
-  $('.loader').hide()
 }
 
 module.exports = {
