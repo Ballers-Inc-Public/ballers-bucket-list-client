@@ -77,7 +77,7 @@ helps to go in with a plan.
 * May 15 - Plan out user stories/features. Create intial repository
 * May 16 - Create Goals data model, initial wireframe, and set up front end AJAX to pull/display goals.
 * May 17 - Deploy app on Heroku/GIT-pages, clean up UI, meet MVP(WOOT), plan bonus features.
-* May 18 - Bonus things...TBD
+* May 18 - Fix bugs, to actually get to MVP.  We created a branch called messWithMaps to test adding google maps functionality but are not planing to present the maps.
 
 ## Link to Live application
 
