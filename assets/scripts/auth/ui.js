@@ -3,11 +3,16 @@
 const store = require('../store')
 const goals = require('../goals/events')
 
+const resetUserForms = function () {
+    $('#sign-up').trigger('reset')
+    $('#sign-in').trigger('reset')
+    $('#change-password').trigger('reset')
+}
 // Sign UP SUCCESS AND FAILURE MESSAGING ________________________
 const signUpSuccess = (data) => {
   console.log('User sucessfully created:', data)
   console.log('Store looks like ', store)
-  $('#sign-up').trigger('reset')
+  resetUserForms()
 }
 
 const signUpFailure = (error) => {
@@ -23,9 +28,9 @@ const signInSuccess = (data) => {
   console.log('signIn success ran, data is: ', data)
   store.user = data.user
   console.log('Store looks like ', store)
-  $('#sign-in').trigger('reset')
   signInSuccessRenderUI()
   goals.onGetGoals()
+  resetUserForms()
 }
 
 const signInFailure = (error) => {
@@ -39,7 +44,7 @@ const signInFailure = (error) => {
 const changePasswordSuccess = (data) => {
   console.log('Password was succesfully changed, data is: ', data)
   console.log('Store looks like ', store)
-  $('#change-password').trigger('reset')
+  resetUserForms()
 }
 
 const changePasswordFailure = (error) => {
@@ -65,13 +70,13 @@ const signOutFailure = (error) => {
   console.log('Store looks like ', store)
 }
 
-const signInSuccessRenderUI = function ()  {
+const signInSuccessRenderUI = function () {
   $('form').hide()
   $('.hide-on-initial-load').show()
   $('.hide-on-sign-in').hide()
 }
 
-const signOutSuccessRenderUI = function ()  {
+const signOutSuccessRenderUI = function () {
   $('form').hide()
   $('.hide-on-initial-load').hide()
   $('.hide-on-sign-in').show()
