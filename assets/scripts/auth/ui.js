@@ -53,12 +53,8 @@ const signInFailure = (error) => {
 const changePasswordSuccess = (data) => {
   console.log('Password was succesfully changed, data is: ', data)
   console.log('Store looks like ', store)
-<<<<<<< HEAD
-  $('#change-password').trigger('reset')
   $('.alert').hide()
-=======
   resetUserForms()
->>>>>>> Added logic to reset forms on success
 }
 
 const changePasswordFailure = (error) => {
