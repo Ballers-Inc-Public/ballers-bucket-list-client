@@ -84,7 +84,23 @@ helps to go in with a plan.
 * May 15 - Plan out user stories/features. Create intial repository
 * May 16 - Create Goals data model, initial wireframe, and set up front end AJAX to pull/display goals.
 * May 17 - Deploy app on Heroku/GIT-pages, clean up UI, meet MVP(WOOT), plan bonus features.
-* May 18 - Fix bugs, to actually get to MVP.  We created a branch called messWithMaps to test adding google maps functionality but are not planing to present the maps.git pu
+* May 18 - Fix bugs, to actually get to MVP.  We created a branch called messWithMaps to test adding google maps functionality but are not planing to present the maps.git 
+
+## Project Planing Approach
+
+We assigned into three loose roles:
+
+Front End - Jason
+Back End - Brian
+Project Lead - Sam
+
+We spend the first half day planing our approach, and agreed to:
+
+Start the next three days with a scrum and making a huddle board:
+
+https://trello.com/ballersincorporated1
+
+Every day ended with a retro (see the upload retro word docs)
 
 ## Link to Live application
 
