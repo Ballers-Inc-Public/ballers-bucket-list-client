@@ -43,9 +43,9 @@ const onUpdateGoal = function (event) {
   console.log(data)
   // checking if the title/status fields are populted
   if (
-    data.goal.title === '' || data.goal.status === '') {
+    data.goal.title === $('#title-' + data.goal.id).text() && data.goal.status === $('#status-' + data.goal.id).text()) {
 // TODO need to add error message here, waiting on a spot in HTML
-    console.log('no Changes necessary')
+    $('.help-block-modify').text('No Changes were made')
     return
   }
 
@@ -77,7 +77,10 @@ const onLoadUpdateForm = function (event) {
   const id = $(event.target).parents('tr').attr('data-id')
   console.log(event)
   $('#modify-target-record').text(id)
-  $('#modify-goal').slideToggle()
+  $('#modify-goal-title').val($('#title-' + id).text())
+  $('#goal-status-select').text($('#status-' + id).text())
+  $('.help-block-modify').text('')
+  $('#modify-goal').slideDown()
 }
 
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
