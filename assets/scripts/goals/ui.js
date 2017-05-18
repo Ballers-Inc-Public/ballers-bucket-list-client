@@ -20,6 +20,10 @@ const getGoalsSuccess = (data) => {
   const dataForHandlebars = {}
   dataForHandlebars.goals = limitGoalsToCurrentUser(data.goals)
   console.log('goals limited to user', dataForHandlebars)
+  console.log('users has THIS may goals ', dataForHandlebars.goals.length)
+  if (dataForHandlebars.goals.length === 0) {
+    $('#no-goals-alert').show()
+  } else { $('#no-goals-alert').hide() }
   $('#display-goals').html('<tr class="table-header"><td>Title</td><td>Status</td><td>Modify</td><td>Delete</td></tr>')
   $('#display-goals').append(showGoals(dataForHandlebars))
 }
