@@ -89,6 +89,7 @@ const onLoadUpdateForm = function (event) {
   $('#goal-status-select').text($('#status-' + id).text())
   $('.help-block-modify').text('')
   $('#modify-goal').slideDown()
+  $('#change-password').slideUp()
 }
 
 // HANDLER TO ASSIGN AUTHORIZATION FUNCTIONS TO OBJECTS___________________
