@@ -2,6 +2,7 @@
 
 const store = require('../store')
 const showGoals = require('../templates/goal.handlebars')
+const showMap = require('../templates/map.handlebars')
 
 const limitGoalsToCurrentUser = function (data) {
   const userOnlyData = []
@@ -15,8 +16,10 @@ const getGoalsSuccess = (data) => {
   const dataForHandlebars = {}
   dataForHandlebars.goals = limitGoalsToCurrentUser(data.goals)
   console.log('goals limited to user', dataForHandlebars)
+  const mapHTML = showMap()
   $('#display-goals').html('<tr class="table-header"><td>ID</td><td>Title</td><td>Status</td><td>Modify</td><td>Delete</td></tr>')
   $('#display-goals').append(showGoals(dataForHandlebars))
+  $('#display-goals').append(mapHTML)
 }
 
 const createGoalSuccess = (data) => {
