@@ -105,19 +105,19 @@ const onSignOut = function (event) {
 }
 
 const onToggleSignUp = function () {
-  $('.alert').hide()
+  ui.resetUserForms()
   $('#sign-in').slideUp()
   $('#sign-up').slideToggle()
 }
 
 const onToggleSignIn = function () {
-  $('.alert').hide()
+  ui.resetUserForms()
   $('#sign-up').slideUp()
   $('#sign-in').slideToggle()
 }
 
 const onToggleChangePWord = function () {
-  $('.alert').hide()
+  ui.resetUserForms()
   $('#change-password').slideToggle()
 }
 

@@ -7,6 +7,7 @@ const resetUserForms = function () {
     $('#sign-up').trigger('reset')
     $('#sign-in').trigger('reset')
     $('#change-password').trigger('reset')
+    $('.alert').hide()
 }
 // Sign UP SUCCESS AND FAILURE MESSAGING ________________________
 const signUpSuccess = (data) => {
@@ -118,5 +119,6 @@ module.exports = {
   signOutFailure,
   signOutSuccess,
   changePasswordFailure,
-  changePasswordSuccess
+  changePasswordSuccess,
+  resetUserForms
 }
